@@ -22,6 +22,7 @@ $font-stack: "Roboto", Arial, sans-serif;
   flex-direction: column;
   justify-content: flex-start;
 }
+
 @mixin flexCenter {
   @extend %flex;
   justify-content: center;
@@ -29,7 +30,7 @@ $font-stack: "Roboto", Arial, sans-serif;
 
 @mixin mq($size) {
   @media only screen and (min-width: $size) {
-    @content
+    @content;
   }
 }
 
@@ -39,7 +40,8 @@ $font-stack: "Roboto", Arial, sans-serif;
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   background-color: $background-color;
   color: $font-color;
   width: 100vw;
@@ -61,6 +63,7 @@ footer {
   p {
     color: $stats-color;
     font-size: 0.5rem;
+
     @include mq(768px) {
       font-size: 1rem;
     }

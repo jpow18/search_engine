@@ -3,7 +3,7 @@ export const getSearchTerm = () => {
   const regex = /[ ]{2,}/gi;
   const searchTerm = rawSearchTerm.replaceAll(regex, " ");
   return searchTerm;
-}
+};
 
 export const retrieveSearchResults = async (searchTerm) => {
   const wikiSearchString = getWikiSearchString(searchTerm);
@@ -13,7 +13,7 @@ export const retrieveSearchResults = async (searchTerm) => {
     resultArray = processWikiResults(wikiSearchResults.query.pages);
   }
   return resultArray;
-}
+};
 
 const getWikiSearchString = (searchTerm) => {
   const maxChars = getMaxChars();
@@ -37,13 +37,13 @@ const requestData = async (searchString) => {
     const data = await response.json();
     return data;
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 };
 
 const processWikiResults = (results) => {
   const resultArray = [];
-  Object.keys(results).forEach(key => {
+  Object.keys(results).forEach((key) => {
     const id = key;
     const title = results[key].title;
     const text = results[key].extract;
@@ -57,5 +57,6 @@ const processWikiResults = (results) => {
       text: text
     };
     resultArray.push(item);
-  })
-}
+  });
+  return resultArray;
+};
